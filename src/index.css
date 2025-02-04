@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+  color: white;
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #536cb3;
+  animation: borderGrow 0.5s ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes borderGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
