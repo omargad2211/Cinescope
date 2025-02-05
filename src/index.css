@@ -27,3 +27,47 @@
     transform: scaleX(1);
   }
 }
+
+.naVglass {
+  background: #00000023;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+.gradient-border {
+  --border-width: 1px;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  background: #222222;
+  border-radius: 10px;
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(60deg, white, black);
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: 10px;
+    animation: moveGradient 4s alternate infinite;
+  }
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}

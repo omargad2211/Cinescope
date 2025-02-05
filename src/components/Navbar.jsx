@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { PiTelevisionFill } from "react-icons/pi";
+import { BiSolidMoviePlay } from "react-icons/bi";
 
 const Navbar = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const navigation = [
-    { title: "TV Shows", path: "/" },
-    { title: "Movies", path: "movie" },
+    {
+      title: "TV Shows",
+      path: "tv",
+      icon: <PiTelevisionFill />,
+    },
+    {
+      title: "Movies",
+      path: "movie",
+      icon: <BiSolidMoviePlay />,
+    },
   ];
 
   // Handle form submission
@@ -29,7 +39,7 @@ const Navbar = () => {
         </Link>
 
         {/* nav items */}
-        <div className="flex items-center justify-center gap-4 mx-auto">
+        <div className=" hidden lg:flex items-center justify-center gap-4 mx-auto">
           {navigation.map((nav, i) => (
             <NavLink
               key={i}
@@ -44,7 +54,7 @@ const Navbar = () => {
         {/* search */}
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="relative text-gray-200"
+          className="relative text-gray-200 hidden lg:block"
         >
           <input
             className="border-[1px] w-full bg-transparent rounded-full outline-none ring-0 py-1 px-2 pl-10"

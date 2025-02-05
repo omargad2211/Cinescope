@@ -2,15 +2,15 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
+import MobileNavigation from "../components/MobileNavigation";
 
 const PublicLayout = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-black">
-        <Outlet />
-      </div>
-      <Footer />
+      <Outlet />
+      {/* <Footer /> */}
+      <MobileNavigation />
     </>
   );
 };
