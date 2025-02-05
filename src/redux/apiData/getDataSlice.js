@@ -17,9 +17,27 @@ export const getDataApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["trending"],
     }),
+    getTopRated: builder.query({
+      query: () => ({
+        url: "movie/top_rated?language=en-US&page=1",
+        method: "GET",
+      }),
+      providesTags: ["TopRated"],
+    }),
+    getMovieDetails: builder.query({
+      query: (id) => ({
+        url: `movie/${id}?language=en-US`,
+        method: "GET",
+      }),
+      providesTags: ["MovieDetails"],
+    }),
   }),
 });
 
 // Export hooks to use in your components
-export const { useGetTrendingQuery, useGetConfigurationQuery } =
-  getDataApiSlice;
+export const {
+  useGetTrendingQuery,
+  useGetConfigurationQuery,
+  useGetTopRatedQuery,
+  useGetMovieDetailsQuery,
+} = getDataApiSlice;
