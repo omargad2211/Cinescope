@@ -9,6 +9,8 @@ import BannerHome from "./components/BannerHome";
 import MainBackground from "./components/MainBackground";
 import MainHeader from "./components/MainHeader";
 import MoviesSwiper from "./components/MoviesSwiper";
+import TrendingShows from "./components/TrendingShows";
+import TopRated from "./components/TopRated";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -26,9 +28,11 @@ const Home = () => {
   console.log(background);
   return (
     <>
-      <MainBackground background={background}>
+      <MainBackground background={background} style={"naVglass"}>
         <MainHeader />
         <MoviesSwiper />
+        <TrendingShows />
+        <TopRated />
       </MainBackground>
     </>
   );
