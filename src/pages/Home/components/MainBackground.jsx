@@ -1,6 +1,6 @@
 import React from "react";
 
-const MainBackground = ({ background, children }) => {
+const MainBackground = ({ background, children,style }) => {
   return (
     <div className="relative pd-14 min-h-screen">
       <img
@@ -10,7 +10,7 @@ const MainBackground = ({ background, children }) => {
         height={1080}
         className="w-full h-full object-cover fixed"
       />
-      <div className="absolute top-0 w-full h-full naVglass"></div>
+      <div className={`absolute top-0 w-full h-full ${style} `}></div>
       {children}
       <div className="fixed w-full h-full  top-0 bg-gradient-to-t from-black to-[#ffffff00] z-3  "></div>
     </div>
