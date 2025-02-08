@@ -3,6 +3,7 @@ import { IoIosStar } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie, path }) => {
+  console.log(movie);
   return (
     <div className="col-span-1 group hover:scale-105 transition-all cursor-pointer relative hover:z-[999] duration-300">
       <Link to={path}>
@@ -18,7 +19,7 @@ const MovieCard = ({ movie, path }) => {
         </div>
         <div>
           <h3 className="mt-3 ml-3 text-start text-white font-medium lg:text-base text-sm">
-            {movie.title}
+            {movie.title || movie.name}
           </h3>
           <div className="flex gap-x-1 ml-3 mt-2">
             <IoIosStar className="text-yellow-400 text-xl mb-2" />
@@ -26,7 +27,9 @@ const MovieCard = ({ movie, path }) => {
               {movie.vote_average}
             </p>
             <p className="text-white text-sm font-medium">
-              | {movie.release_date?.slice(0, 4)}
+              |{" "}
+              {movie.release_date?.slice(0, 4) ||
+                movie.first_air_date?.slice(0, 4)}
             </p>
           </div>
         </div>
