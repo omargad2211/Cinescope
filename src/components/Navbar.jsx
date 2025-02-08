@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { PiTelevisionFill } from "react-icons/pi";
 import { BiSolidMoviePlay } from "react-icons/bi";
+import Search from "./Search";
 
 const Navbar = () => {
   const { register, handleSubmit } = useForm();
@@ -16,7 +17,7 @@ const Navbar = () => {
     },
     {
       title: "Movies",
-      path: "movies",
+      path: "movie",
       icon: <BiSolidMoviePlay />,
     },
   ];
@@ -52,30 +53,13 @@ const Navbar = () => {
         </div>
 
         {/* search */}
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="relative text-gray-200 hidden lg:block"
-        >
-          <input
-            className="border-[1px] w-full bg-transparent rounded-full outline-none ring-0 py-1 px-2 pl-10"
-            type="search"
-            placeholder="search"
-            {...register("searchQuery", { required: true })}
-          />
-          <button
-            type="submit"
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
-          >
-            <IoIosSearch />
-          </button>
-        </form>
-
+        <Search />
         {/* profile */}
-        <Link to="/profile">
+        <Link to="/profile" className="hidden lg:block">
           <img
             src="/images/User-Profile-PNG-Clipart.png"
             alt="profile"
-            className="size-8"
+            className="size-8 "
           />
         </Link>
       </div>
