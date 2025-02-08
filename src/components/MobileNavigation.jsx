@@ -1,9 +1,11 @@
 import React from "react";
-import { BiSolidMoviePlay } from "react-icons/bi";
+import { BiHeartCircle, BiSolidMoviePlay } from "react-icons/bi";
+import { FaHeart } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdHomeFilled } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { CiHeart } from "react-icons/ci";
 
 const MobileNavigation = () => {
   const mobileNavigation = [
@@ -23,9 +25,9 @@ const MobileNavigation = () => {
       icon: <BiSolidMoviePlay />,
     },
     {
-      title: "search",
-      path: "/search",
-      icon: <IoSearchOutline />,
+      title: "Favourites",
+      path: "favourite",
+      icon: <CiHeart />,
     },
   ];
   return (
