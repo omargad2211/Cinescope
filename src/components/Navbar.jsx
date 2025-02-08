@@ -16,7 +16,7 @@ const Navbar = () => {
     },
     {
       title: "Movies",
-      path: "movie",
+      path: "movies",
       icon: <BiSolidMoviePlay />,
     },
   ];
