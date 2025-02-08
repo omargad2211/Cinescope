@@ -1,11 +1,19 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import MainBackground from "../Home/components/MainBackground";
-import { useGetMovieDetailsQuery } from "../../redux/apiData/getDataSlice";
+import {
+  useGetMovieDetailsQuery,
+  useGetMovieImagesQuery,
+  useGetMovieVideoQuery,
+} from "../../redux/apiData/getDataSlice";
+import { MdSlowMotionVideo } from "react-icons/md";
+import { RiHeartAddFill } from "react-icons/ri";
 
 const MovieDetails = () => {
   const { movieID } = useParams();
   console.log(movieID);
+
+  // get movie details
   const {
     data: movieData,
     error,
@@ -14,12 +22,31 @@ const MovieDetails = () => {
   console.log(movieData);
   const background = `https://image.tmdb.org/t/p/original/${movieData?.poster_path}`;
   console.log(background);
+
+  // get movie video
+  const { data: movieVedios } = useGetMovieVideoQuery(movieID);
+  const { data: movieImages } = useGetMovieImagesQuery(movieID);
+  console.log(movieImages);
+
   return (
     <>
       <MainBackground background={background}>
-        <div className="flex flex-wrap justify-between items-center gap-4 pt-48 relative z-20  w-full container md:w-custom-md xl:w-custom-xl mx-auto  ">
-          <div className="flex flex-col items-center justify-center gap-2">
+        <div className="flex flex-wrap justify-between items-center gap-4 pt-48 relative z-20  w-full  container md:w-custom-md xl:w-custom-xl mx-auto  ">
+          <div className="flex flex-col items-center justify-center gap-2 w-full lg:w-1/2">
             {/* title image  */}
+            {movieImages?.logos[0]?.file_path != undefined ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movieImages?.logos[0]?.file_path}`}
+                alt="movies"
+                width={350}
+                height={350}
+                className=" h-auto lg:w-[20%] w-[35%] lg:h-auto"
+              />
+            ) : (
+              <p className="text-3xl lg:text-5xl pt-2 3 pb-4     mBlur  borderGlass rounded-3xl inline-block    px-3 text-white font-extrabold lg:mt-10 ">
+                {movieData?.original_name}
+              </p>
+            )}
 
             <p className="text-white bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 px-2 py-1 rounded-full ">
               {movieData?.tagline}
@@ -49,10 +76,44 @@ const MovieDetails = () => {
               </p>
             </div>
           </div>
+          <div className="flex flex-col justify-center items-center bg-white/20 p-4 gap-4 w-full lg:w-1/3 rounded-xl">
+            <img
+              src={`https://image.tmdb.org/t/p/original/${movieImages?.posters[0]?.file_path} `}
+              alt="poster_Movie"
+              className="w-32 lg:w-48 rounded-3xl block     borderGlass "
+            />
+
+            <div className=" mBlur  border mBlur  borderGlass rounded-3xl py-3 px-5 lg:px-10  hover:shadow-black group hover:shadow-2xl transition-all hover:scale-105">
+              <a
+                target="_blank"
+                href={`https://www.youtube.com/watch?v=${movieVedios?.results[0]?.key}`}
+                className=" flex flex-col gap-y-3 items-center     justify-center "
+              >
+                <p className="  text-white text-[12px] lg:text-sm font-semibold   ">
+                  <MdSlowMotionVideo className="text-green text-2xl inline  mx-1 " />
+                  Watch Trailer
+                </p>
+              </a>
+            </div>
+            <button
+              // onClick={() => log()}
+              className=" flex flex-col gap-y-3 items-center    justify-center  mBlur  border mBlur  borderGlass  rounded-3xl py-3 px-5 lg:px-8 hover:scale-105 transition-all"
+            >
+              <p className=" text-white text-[12px] lg:text-sm font-semibold   ">
+                <RiHeartAddFill className="text-white text-sm lg:text-2xl inline  mx-1 " />
+                Add to Favourits
+                {/* <MdDeleteForever className="text-white text-base lg:text-2xl inline  mx-1 " /> */}
+              </p>
+            </button>
+          </div>
         </div>
       </MainBackground>
     </>
   );
+};
+
+const watchCard = () => {
+  return <div></div>;
 };
 
 // export default MovieDetails;

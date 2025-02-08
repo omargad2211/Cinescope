@@ -31,6 +31,20 @@ export const getDataApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["MovieDetails"],
     }),
+    getMovieVideo: builder.query({
+      query: (id) => ({
+        url: `movie/${id}/videos?language=en-US`,
+        method: "GET",
+      }),
+      providesTags: ["MovieDetails"],
+    }),
+    getMovieImages: builder.query({
+      query: (id) => ({
+        url: `movie/${id}/images`,
+        method: "GET",
+      }),
+      providesTags: ["MovieDetails"],
+    }),
   }),
 });
 
@@ -40,4 +54,6 @@ export const {
   useGetConfigurationQuery,
   useGetTopRatedQuery,
   useGetMovieDetailsQuery,
+  useGetMovieVideoQuery,
+  useGetMovieImagesQuery
 } = getDataApiSlice;
