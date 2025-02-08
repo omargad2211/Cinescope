@@ -5,9 +5,12 @@ import {
   useGetMovieDetailsQuery,
   useGetMovieImagesQuery,
   useGetMovieVideoQuery,
+  useGetRecommendedQuery,
 } from "../../redux/apiData/getDataSlice";
 import { MdSlowMotionVideo } from "react-icons/md";
 import { RiHeartAddFill } from "react-icons/ri";
+import ScrollingCrew from "./components/ScrollingCrew";
+import RecommendedMovies from "./components/RecommendedMovies";
 
 const MovieDetails = () => {
   const { movieID } = useParams();
@@ -106,7 +109,9 @@ const MovieDetails = () => {
               </p>
             </button>
           </div>
+          <ScrollingCrew />
         </div>
+        <RecommendedMovies />
       </MainBackground>
     </>
   );
