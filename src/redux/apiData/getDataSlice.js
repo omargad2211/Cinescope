@@ -25,22 +25,22 @@ export const getDataApiSlice = apiSlice.injectEndpoints({
       providesTags: ["TopRated"],
     }),
     getMovieDetails: builder.query({
-      query: (id) => ({
-        url: `movie/${id}?language=en-US`,
+      query: ({ type, id }) => ({
+        url: `${type}/${id}?language=en-US`,
         method: "GET",
       }),
       providesTags: ["MovieDetails"],
     }),
     getMovieVideo: builder.query({
-      query: (id) => ({
-        url: `movie/${id}/videos?language=en-US`,
+      query: ({ type, id }) => ({
+        url: `${type}/${id}/videos?language=en-US`,
         method: "GET",
       }),
       providesTags: ["MovieDetails"],
     }),
     getMovieImages: builder.query({
-      query: (id) => ({
-        url: `movie/${id}/images`,
+      query: ({ type, id }) => ({
+        url: `${type}/${id}/images`,
         method: "GET",
       }),
       providesTags: ["MovieDetails"],
@@ -54,10 +54,24 @@ export const getDataApiSlice = apiSlice.injectEndpoints({
     }),
     getRecommended: builder.query({
       query: ({ type, id }) => ({
-        url: `/${type}/${id}/recommendations?language=en-US`,
+        url: `${type}/${id}/recommendations?language=en-US`,
         method: "GET",
       }),
       providesTags: ["TopRated"],
+    }),
+    getDiscover: builder.query({
+      query: ({ type, page }) => ({
+        url: `discover/${type}?&page=${page}`,
+        method: "GET",
+      }),
+      providesTags: ["Discover"],
+    }),
+    getSearch: builder.query({
+      query: ({ name, page }) => ({
+        url: `search/multi?query=${name}&include_adult=false&language=en-US&page=${page}`,
+        method: "GET",
+      }),
+      providesTags: ["SearchData"],
     }),
   }),
 });
@@ -72,4 +86,6 @@ export const {
   useGetMovieImagesQuery,
   useGetMovieCrewQuery,
   useGetRecommendedQuery,
+  useGetDiscoverQuery,
+  useGetSearchQuery,
 } = getDataApiSlice;
