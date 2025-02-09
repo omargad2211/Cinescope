@@ -3,7 +3,7 @@ import React from "react";
 const MainHeader = () => {
   return (
     <>
-      <header className="relative pt-32 py-10 h-full overflow-hidden">
+      <header className="relative pt-32 h-full overflow-hidden">
         <div className="lg:mx-28 mx-4 relative z-50 flex justify-center items-center flex-col cover">
           <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/5 xl:text-9xl lg:text-8xl md:text-7xl sm:text-5xl text-4xl py-2 font-extrabold transition-all">
             CineScope

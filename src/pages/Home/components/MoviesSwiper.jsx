@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-duplicate-props */
-"use client";
+
 import "swiper/css";
 import "./swiper.css";
 import "swiper/css/effect-coverflow";
@@ -14,7 +14,6 @@ import {
 } from "swiper/modules";
 import { useEffect, useState } from "react";
 
-import { IoIosStar } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -29,16 +28,7 @@ function MoviesSwiper() {
   }, [bannerData]);
   return (
     <div className="relative overflow-hidden flex flex-col justify-center items-center min-h-[50vh] lg:h-[90vh]">
-      {/* <Image
-        src={bg}
-        alt="texture"
-        className="absolute opacity-15 top-0 md:top-[-25%] z-[1]"
-      />
-      <Image
-        src={bg}
-        alt="texture2"
-        className="absolute sm:hidden block opacity-15 top-[30%] z-[1] -rotate-180"
-      /> */}
+
       <div>
         {swiperInitialized ? (
           <Swiper
