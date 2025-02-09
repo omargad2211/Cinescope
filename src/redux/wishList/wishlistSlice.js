@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-
 // Function to load the Wishlist from LocalStorage
 const loadWishlistFromLocalStorage = () => {
   const savedWishlist = localStorage.getItem("Wishlist");
@@ -22,6 +21,7 @@ const WishlistSlice = createSlice({
     addToWishlist: (state, action) => {
       const {
         id,
+        type,
         name,
         description,
         image,
@@ -31,14 +31,13 @@ const WishlistSlice = createSlice({
         categories,
         isSelected,
       } = action.payload;
-      const existingItem = state.items.find(
-        (item) => item.id === id
-      );
+      const existingItem = state.items.find((item) => item.id === id);
 
       if (!existingItem) {
         // Add new item to Wishlist
         state.items.push({
           id,
+          type,
           name,
           description,
           image,

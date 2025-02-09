@@ -54,6 +54,7 @@ const MovieDetails = () => {
       dispatch(
         addToWishlist({
           id: movieID,
+          type:explore,
           name: movieData?.original_title || movieData?.title,
           description: movieData?.overview,
           image: background,

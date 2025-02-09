@@ -43,7 +43,7 @@ const Favourite = () => {
                     className="bg-white/20 rounded-full border border-neutral-400 flex items-center justify-evenly gap-2 px-5 py-2"
                   >
                     <Link
-                      to={movie.id}
+                      to={`/${movie.type}/${movie.id}`}
                       className="flex w-full items-center gap-2"
                     >
                       {movie.image && (
@@ -86,7 +86,7 @@ const Favourite = () => {
                         </div>
                         {movie.duration && (
                           <p className="text-neutral-300 bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 px-3 py-1 rounded-full">
-                            {movie.duration} mins
+                            {movie.duration}mins
                           </p>
                         )}
                       </div>
