@@ -62,13 +62,13 @@ const Favorites = () => {
                           {movie.description}
                         </p>
                         {Array.isArray(movie.categories) && (
-                          <div className="flex justify-center items-center gap-1 text-sm">
-                            {movie.categories.map(
+                          <div className="flex flex-wrap justify-center items-center gap-1 text-sm">
+                            {movie.categories.slice(0, 2).map(
                               (category) =>
                                 category && (
                                   <p
                                     key={category.id}
-                                    className="text-neutral-300 bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 px-2 py-1 rounded-full"
+                                    className="text-neutral-300 text-xs md:text-sm bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 px-2 py-1 rounded-full"
                                   >
                                     {category.name}
                                   </p>
