@@ -73,6 +73,15 @@ export const getDataApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["SearchData"],
     }),
+    getGenre: builder.query({
+      query: ({ type, page, genreIds }) => ({
+        url: `discover/${type}?page=${page}${
+          genreIds ? `&with_genres=${genreIds}` : ""
+        }`,
+        method: "GET",
+      }),
+      providesTags: ["Genres"],
+    }),
   }),
 });
 
@@ -88,4 +97,5 @@ export const {
   useGetRecommendedQuery,
   useGetDiscoverQuery,
   useGetSearchQuery,
+  useGetGenreQuery,
 } = getDataApiSlice;
