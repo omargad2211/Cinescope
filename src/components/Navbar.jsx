@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { PiTelevisionFill } from "react-icons/pi";
 import { BiSolidMoviePlay } from "react-icons/bi";
 import Search from "./Search";
+import { CiHeart } from "react-icons/ci";
 
 const Navbar = () => {
   const { register, handleSubmit } = useForm();
@@ -55,13 +56,12 @@ const Navbar = () => {
         {/* search */}
         <Search />
         {/* profile */}
-        <Link to="/profile" className="hidden lg:block">
-          <img
-            src="/images/User-Profile-PNG-Clipart.png"
-            alt="profile"
-            className="size-8 "
-          />
-        </Link>
+        <NavLink
+          to="/favourite"
+          className="hidden lg:flex gap-[2px] items-center text-gray-300 hover:text-gray-100 transition-colors duration-500 text-2xl px-4"
+        >
+          <CiHeart />
+        </NavLink>
       </div>
     </nav>
   );
