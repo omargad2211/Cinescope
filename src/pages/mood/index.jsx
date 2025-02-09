@@ -5,15 +5,17 @@ import MovieCard from "../../components/MovieCard";
 const moodGenreMapping = {
   Happy: [35, 12, 10751], // Comedy, Adventure, Family
   Sad: [18, 10749], // Drama, Romance
+  Adventurous: [12, 28], // Adventure, Action
+
   Excited: [28, 53], // Action, Thriller
   Scared: [27, 9648], // Horror, Mystery
   Thoughtful: [99, 36], // Documentary, History
   Romantic: [10749, 10751], // Romance, Family
   Nostalgic: [16, 10770], // Animation, TV Movie
+  Chill: [35, 10770], // Comedy, TV Movie
+
   Futuristic: [878, 28], // Science Fiction, Action
   Heroic: [28, 14], // Action, Fantasy
-  Adventurous: [12, 28], // Adventure, Action
-  Chill: [35, 10770], // Comedy, TV Movie
   Mysterious: [9648, 53], // Mystery, Thriller
   Epic: [14, 36], // Fantasy, History
   Uplifting: [10751, 10402], // Family, Music
