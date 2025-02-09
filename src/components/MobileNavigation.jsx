@@ -6,6 +6,8 @@ import { MdHomeFilled } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { Link, NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
+import { TbMoodSearch } from "react-icons/tb";
+
 
 const MobileNavigation = () => {
   const mobileNavigation = [
@@ -28,6 +30,11 @@ const MobileNavigation = () => {
       title: "Favorites",
       path: "favorites",
       icon: <CiHeart />,
+    },
+    {
+      title: "Mood",
+      path: "mood",
+      icon: <TbMoodSearch /> ,
     },
   ];
   return (
