@@ -56,21 +56,21 @@ const Favorites = () => {
                         />
                       )}
                       <div className="flex flex-col items-start justify-start gap-1 px-2">
-                        <p className="text-neutral-200 font-semibold text-base">
+                        <p className="text-neutral-200 font-semibold text-base text-nowrap">
                           {movie.name}{" "}
                           {movie.date ? `(${movie.date.slice(0, 4)})` : ""}
                         </p>
-                        <p className="text-neutral-400 font-thin text-xs truncate-multiline pr-8">
+                        <p className="text-neutral-400 font-thin text-[8px] truncate-multiline pr-8">
                           {movie.description}
                         </p>
                         {Array.isArray(movie.categories) && (
-                          <div className="flex flex-wrap justify-center items-center gap-1 text-sm">
+                          <div className="flex flex-wrap justify-center items-center gap-1 ">
                             {movie.categories.slice(0, 2).map(
                               (category) =>
                                 category && (
                                   <p
                                     key={category.id}
-                                    className="text-neutral-300 text-xs md:text-sm bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 px-2 py-1 rounded-full"
+                                    className="text-neutral-300 text-[10px] md:text-sm bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 p-1 rounded-full"
                                   >
                                     {category.name}
                                   </p>
@@ -81,14 +81,14 @@ const Favorites = () => {
                       </div>
                       <div>
                         <div className="flex items-start justify-center gap-1">
-                          <IoIosStar className="text-yellow-400 text-xl mb-2" />
+                          <IoIosStar className="text-yellow-400 text-lg mb-2" />
                           <p className="text-white text-sm font-medium">
                             {movie.rate}
                           </p>
                         </div>
                         {movie.duration && (
-                          <p className="text-neutral-300 bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 px-3 py-1 rounded-full">
-                            {movie.duration}mins
+                          <p className="text-neutral-300 text-sm bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 px-3 py-1 rounded-full text-nowrap">
+                            {movie.duration} mins
                           </p>
                         )}
                       </div>
