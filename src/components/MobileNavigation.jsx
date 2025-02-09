@@ -8,7 +8,6 @@ import { Link, NavLink } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
 import { TbMoodSearch } from "react-icons/tb";
 
-
 const MobileNavigation = () => {
   const mobileNavigation = [
     {
@@ -34,7 +33,7 @@ const MobileNavigation = () => {
     {
       title: "Mood",
       path: "mood",
-      icon: <TbMoodSearch /> ,
+      icon: <TbMoodSearch />,
     },
   ];
   return (
@@ -52,8 +51,10 @@ const MobileNavigation = () => {
                   }`
                 }
               >
-                <div className="text-2xl">{nav.icon}</div>
-                <p className="text-sm">{nav.title}</p>
+                <div className="text-lg md:text-2xl">{nav.icon}</div>
+                <p className="text-xs md:text-sm text-nowrap hidden xs:block">
+                  {nav.title}
+                </p>
               </NavLink>
             );
           })}
