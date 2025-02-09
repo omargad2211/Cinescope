@@ -4,6 +4,7 @@ import PublicLayout from "./Layouts/PublicLayout";
 import MovieDetails from "./pages/MovieDetails";
 import Explore from "./pages/Explore";
 import Favorites from "./pages/Favourite";
+import Mood from "./pages/mood";
 
 function App() {
   return (
@@ -20,7 +21,13 @@ function App() {
 function ConditionalExplore() {
   const { explore } = useParams();
 
-  return explore === "favorites" ? <Favorites /> : <Explore />;
+  return explore === "favorites" ? (
+    <Favorites />
+  ) : explore === "mood" ? (
+    <Mood />
+  ) : (
+    <Explore />
+  );
 }
 
 export default App;

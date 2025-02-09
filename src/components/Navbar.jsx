@@ -21,6 +21,11 @@ const Navbar = () => {
       path: "movie",
       icon: <BiSolidMoviePlay />,
     },
+    {
+      title: "Mood",
+      path: "mood",
+      icon: <BiSolidMoviePlay />,
+    },
   ];
 
   // Handle form submission
