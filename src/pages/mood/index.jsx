@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useGetGenreQuery } from "../../redux/apiData/getDataSlice";
 import MovieCard from "../../components/MovieCard";
+import MoodFilterSkeleton from "./MoodFilterSkeleton";
 
 const moodGenreMapping = {
   Happy: [35, 12, 10751], // Comedy, Adventure, Family
@@ -12,8 +13,6 @@ const moodGenreMapping = {
   Thoughtful: [99, 36], // Documentary, History
   Romantic: [10749, 10751], // Romance, Family
   Nostalgic: [16, 10770], // Animation, TV Movie
-  Chill: [35, 10770], // Comedy, TV Movie
-
   Futuristic: [878, 28], // Science Fiction, Action
   Heroic: [28, 14], // Action, Fantasy
   Mysterious: [9648, 53], // Mystery, Thriller
@@ -66,7 +65,10 @@ export default function MoodFilter() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  // console.log(isLoading);
+  if (isLoading) {
+    return <MoodFilterSkeleton />;
+  }
   return (
     <div className="min-h-screen py-24 bg-gradient-to-r from-black to-cyan-800">
       <div className="container md:w-custom-md xl:w-custom-xl mx-auto">
@@ -88,16 +90,14 @@ export default function MoodFilter() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full">
-          {movieList.map((movie) => (
+          {movieList.map((movie, index) => (
             <MovieCard
-              key={movie.id}
+              key={`${movie.id}-${index}`}
               movie={movie}
               path={`/movie/${movie.id}`}
             />
           ))}
         </div>
-
-        {isLoading && <p className="text-center text-white mt-4">Loading...</p>}
       </div>
     </div>
   );
