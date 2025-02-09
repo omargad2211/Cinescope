@@ -26,14 +26,14 @@ const MobileNavigation = () => {
       icon: <BiSolidMoviePlay />,
     },
     {
-      title: "Favorites",
-      path: "favorites",
-      icon: <CiHeart />,
-    },
-    {
       title: "Mood",
       path: "mood",
       icon: <TbMoodSearch />,
+    },
+    {
+      title: "Favorites",
+      path: "favorites",
+      icon: <CiHeart />,
     },
   ];
   return (
