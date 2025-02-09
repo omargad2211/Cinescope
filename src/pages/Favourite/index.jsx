@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeFromWishlist } from "../../redux/wishList/wishlistSlice";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 
 const Favorites = () => {
   const wishlist = useSelector((state) => state.wishlist.items);
@@ -18,11 +19,12 @@ const Favorites = () => {
       <div className="container md:w-custom-md xl:w-custom-xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-8">
-          <h1 className="text-white text-4xl font-bold uppercase tracking-wider">
+          <h1 className="text-white text-4xl font-bold uppercase tracking-wider text-start">
             Your Favorites
           </h1>
-          <p className="text-neutral-300 mt-2 py-2 px-4 rounded-lg max-w-sm mx-auto">
-            Slide left to remove from favorites
+          <p className="text-neutral-400 mt-2 py-2 px-4 text-start text-sm flex gap-1 items-center">
+            <MdKeyboardDoubleArrowLeft />
+            <span>Slide left to remove from favorites</span>
           </p>
         </div>
 
