@@ -11,13 +11,13 @@ import MainHeader from "./components/MainHeader";
 import MoviesSwiper from "./components/MoviesSwiper";
 import TrendingShows from "./components/TrendingShows";
 import TopRated from "./components/TopRated";
+import TrendingShowsSkeleton from "./components/TrendingShowsSkeleton";
 
 const Home = () => {
   const dispatch = useDispatch();
   const { data: trendingData, isLoading, isError } = useGetTrendingQuery();
   const { data: configurationData } = useGetConfigurationQuery();
-  console.log(trendingData?.results);
-  console.log(configurationData?.images?.secure_base_url);
+
 
   dispatch(setBannerData(trendingData?.results));
   dispatch(
@@ -31,7 +31,7 @@ const Home = () => {
       <MainBackground background={background} style={"naVglass"}>
         <MainHeader />
         <MoviesSwiper />
-        <TrendingShows />
+        {isLoading ? <TrendingShowsSkeleton /> : <TrendingShows />}
         <TopRated />
       </MainBackground>
     </>
