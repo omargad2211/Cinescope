@@ -14,7 +14,7 @@ const TopRated = () => {
       <p className="font-semibold text-2xl text-neutral-300">
         Top Rated Movies
       </p>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full">
         {topRated?.results.map((TopRated) => {
           return (
             <MovieCard
