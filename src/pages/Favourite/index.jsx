@@ -56,7 +56,7 @@ const Favorites = () => {
                         />
                       )}
                       <div className="flex flex-col items-start justify-start gap-1 px-2">
-                        <p className="text-neutral-200 font-semibold text-base text-nowrap">
+                        <p className="text-neutral-200 font-semibold text-sm xs:text-base text-nowrap">
                           {movie.name}{" "}
                           {movie.date ? `(${movie.date.slice(0, 4)})` : ""}
                         </p>
