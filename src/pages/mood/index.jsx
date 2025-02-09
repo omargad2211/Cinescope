@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGetGenreQuery } from "../../redux/apiData/getDataSlice";
 import MovieCard from "../../components/MovieCard";
 
@@ -8,14 +8,28 @@ const moodGenreMapping = {
   Excited: [28, 53], // Action, Thriller
   Scared: [27, 9648], // Horror, Mystery
   Thoughtful: [99, 36], // Documentary, History
+  Romantic: [10749, 10751], // Romance, Family
+  Nostalgic: [16, 10770], // Animation, TV Movie
+  Futuristic: [878, 28], // Science Fiction, Action
+  Heroic: [28, 14], // Action, Fantasy
+  Adventurous: [12, 28], // Adventure, Action
+  Chill: [35, 10770], // Comedy, TV Movie
+  Mysterious: [9648, 53], // Mystery, Thriller
+  Epic: [14, 36], // Fantasy, History
+  Uplifting: [10751, 10402], // Family, Music
 };
+
 export default function MoodFilter() {
   const [selectedMoods, setSelectedMoods] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
+  const [movieList, setMovieList] = useState([]);
 
   const toggleMood = (mood) => {
     setSelectedMoods((prev) =>
       prev.includes(mood) ? prev.filter((m) => m !== mood) : [...prev, mood]
     );
+    setPageNum(1); // Reset page number on mood change
+    setMovieList([]); // Clear previous movie list
   };
 
   // Combine all genre IDs for selected moods
@@ -25,23 +39,45 @@ export default function MoodFilter() {
 
   const { data: movies, isLoading } = useGetGenreQuery({
     type: "movie",
-    page: 1,
-    genreIds, // pass genreIds if needed
+    page: pageNum,
+    genreIds,
   });
-  console.log(movies);
+
+  // Append new data to movie list when `movies` changes
+  useEffect(() => {
+    if (movies?.results) {
+      setMovieList((prev) => [...prev, ...movies.results]);
+    }
+  }, [movies]);
+
+  // Infinite scroll logic
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 100
+      ) {
+        setPageNum((prev) => prev + 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen py-24 bg-gradient-to-r from-black to-cyan-700">
+    <div className="min-h-screen py-24 bg-gradient-to-r from-black to-cyan-800">
       <div className="container md:w-custom-md xl:w-custom-xl mx-auto">
         <h1 className="text-xl mb-4 text-neutral-300">Select Your Mood</h1>
-        <div className="flex gap-4 mb-6">
+        <div className="flex gap-4 mb-6 flex-wrap">
           {Object.keys(moodGenreMapping).map((mood) => (
             <button
               key={mood}
               onClick={() => toggleMood(mood)}
               className={`px-4 py-2 rounded ${
                 selectedMoods.includes(mood)
-                  ? "bg-green-500 text-white"
-                  : "bg-gray-300"
+                  ? "bg-cyan-700/50 text-neutral-100"
+                  : "bg-black/50 text-neutral-400"
               }`}
             >
               {mood}
@@ -49,15 +85,17 @@ export default function MoodFilter() {
           ))}
         </div>
 
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <div className="grid grid-cols-3 lg:grid-cols-5 gap-4 w-full">
-            {movies?.results.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full">
+          {movieList.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              path={`/movie/${movie.id}`}
+            />
+          ))}
+        </div>
+
+        {isLoading && <p className="text-center text-white mt-4">Loading...</p>}
       </div>
     </div>
   );
