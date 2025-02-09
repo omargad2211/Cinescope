@@ -28,6 +28,7 @@ const WishlistSlice = createSlice({
         rate,
         date,
         duration,
+        seasons,
         categories,
         isSelected,
       } = action.payload;
@@ -44,6 +45,7 @@ const WishlistSlice = createSlice({
           rate,
           date,
           duration,
+          seasons,
           categories,
           isSelected,
         });

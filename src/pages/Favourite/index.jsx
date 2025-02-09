@@ -103,6 +103,11 @@ const Favorites = () => {
                               {movie.duration} mins
                             </p>
                           )}
+                          {movie.seasons && (
+                            <p className="text-neutral-300 text-sm bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 px-3 py-1 rounded-full text-nowrap">
+                              seasons: {movie.seasons}
+                            </p>
+                          )}
                         </div>
                       </Link>
                     </motion.div>
