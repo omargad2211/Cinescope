@@ -7,14 +7,21 @@ import {
   useGetMovieVideoQuery,
   useGetRecommendedQuery,
 } from "../../redux/apiData/getDataSlice";
-import { MdSlowMotionVideo } from "react-icons/md";
+import { MdDeleteForever, MdSlowMotionVideo } from "react-icons/md";
 import { RiHeartAddFill } from "react-icons/ri";
 import ScrollingCrew from "./components/ScrollingCrew";
 import RecommendedMovies from "./components/RecommendedMovies";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../redux/wishList/wishlistSlice";
+import { IoHeartDislikeOutline } from "react-icons/io5";
 
 const MovieDetails = () => {
   const { movieID, explore } = useParams();
   console.log(movieID);
+  const dispatch = useDispatch();
 
   // get movie details
   const {
@@ -36,6 +43,29 @@ const MovieDetails = () => {
     id: movieID,
   });
   console.log(movieImages);
+
+  const wishlist = useSelector((state) => state.wishlist.items);
+  const isSelected = wishlist?.some((item) => item.id === movieID);
+
+  const handleToggleWishlist = () => {
+    if (isSelected) {
+      dispatch(removeFromWishlist({ id: movieID }));
+    } else {
+      dispatch(
+        addToWishlist({
+          id: movieID,
+          name: movieData?.original_title || movieData?.title,
+          description: movieData?.overview,
+          image: background,
+          rate: movieData?.vote_average,
+          date: movieData?.release_date,
+          duration: movieData?.runtime,
+          categories: movieData?.genres,
+          isSelected: true,
+        })
+      );
+    }
+  };
 
   return (
     <>
@@ -105,13 +135,21 @@ const MovieDetails = () => {
               </a>
             </div>
             <button
-              // onClick={() => log()}
+              onClick={() => handleToggleWishlist()}
               className=" flex flex-col gap-y-3 items-center    justify-center  mBlur  border mBlur  borderGlass  rounded-3xl py-3 px-5 lg:px-8 hover:scale-105 transition-all"
             >
-              <p className=" text-white text-[12px] lg:text-sm font-semibold   ">
-                <RiHeartAddFill className="text-white text-sm lg:text-2xl inline  mx-1 " />
-                Add to Favourits
-                {/* <MdDeleteForever className="text-white text-base lg:text-2xl inline  mx-1 " /> */}
+              <p className=" text-white text-[12px] lg:text-sm font-semibold flex items-center justify-center   ">
+                {isSelected ? (
+                  <>
+                    <IoHeartDislikeOutline className="text-white text-sm lg:text-2xl inline mx-1" />
+                    Remove from Favourites
+                  </>
+                ) : (
+                  <>
+                    <RiHeartAddFill className="text-white text-sm lg:text-2xl inline mx-1" />
+                    Add to Favourites
+                  </>
+                )}
               </p>
             </button>
           </div>
