@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import PublicLayout from "./Layouts/PublicLayout";
 import MovieDetails from "./pages/MovieDetails";
 import Explore from "./pages/Explore";
-import Favourite from "./pages/Favourite";
+import Favorites from "./pages/Favourite";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
 function ConditionalExplore() {
   const { explore } = useParams();
 
-  return explore === "favourite" ? <Favourite /> : <Explore />;
+  return explore === "favorites" ? <Favorites /> : <Explore />;
 }
 
 export default App;

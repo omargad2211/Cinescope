@@ -5,7 +5,7 @@ import { removeFromWishlist } from "../../redux/wishList/wishlistSlice";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const Favourite = () => {
+const Favorites = () => {
   const wishlist = useSelector((state) => state.wishlist.items);
   const dispatch = useDispatch();
 
@@ -101,4 +101,4 @@ const Favourite = () => {
   );
 };
 
-export default Favourite;
+export default Favorites;

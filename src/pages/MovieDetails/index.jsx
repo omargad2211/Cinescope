@@ -54,7 +54,7 @@ const MovieDetails = () => {
       dispatch(
         addToWishlist({
           id: movieID,
-          type:explore,
+          type: explore,
           name: movieData?.original_title || movieData?.title,
           description: movieData?.overview,
           image: background,
@@ -143,12 +143,12 @@ const MovieDetails = () => {
                 {isSelected ? (
                   <>
                     <IoHeartDislikeOutline className="text-white text-sm lg:text-2xl inline mx-1" />
-                    Remove from Favourites
+                    Remove from Favoritess
                   </>
                 ) : (
                   <>
                     <RiHeartAddFill className="text-white text-sm lg:text-2xl inline mx-1" />
-                    Add to Favourites
+                    Add to Favoritess
                   </>
                 )}
               </p>

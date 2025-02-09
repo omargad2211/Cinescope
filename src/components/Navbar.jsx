@@ -57,7 +57,7 @@ const Navbar = () => {
         <Search />
         {/* profile */}
         <NavLink
-          to="/favourite"
+          to="/favorites"
           className="hidden lg:flex gap-[2px] items-center text-gray-300 hover:text-gray-100 transition-colors duration-500 text-2xl px-4"
         >
           <CiHeart />

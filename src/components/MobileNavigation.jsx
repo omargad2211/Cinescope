@@ -25,8 +25,8 @@ const MobileNavigation = () => {
       icon: <BiSolidMoviePlay />,
     },
     {
-      title: "Favourites",
-      path: "favourite",
+      title: "Favoritess",
+      path: "favorites",
       icon: <CiHeart />,
     },
   ];
