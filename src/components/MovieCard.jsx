@@ -3,7 +3,7 @@ import { IoIosStar } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie, path }) => {
-  console.log(movie);
+  // console.log(movie);
   return (
     <div className="col-span-1 group hover:scale-105 transition-all cursor-pointer relative hover:z-[999] duration-300">
       <Link to={path}>
