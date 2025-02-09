@@ -48,7 +48,7 @@ const WishlistSlice = createSlice({
           isSelected,
         });
         saveWishlistToLocalStorage(state.items);
-        // toast.success('Film added to Favoritess');
+        // toast.success('Film added to Favorites');
       }
     },
     removeFromWishlist: (state, action) => {
@@ -57,7 +57,7 @@ const WishlistSlice = createSlice({
         (item) => !(item.id === id && item.subjectID === subjectID)
       );
       saveWishlistToLocalStorage(state.items);
-      // toast.error("Film removed from Favoritess");
+      // toast.error("Film removed from Favorites");
     },
     clearWishlist: (state) => {
       state.items = [];

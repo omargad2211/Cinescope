@@ -143,12 +143,12 @@ const MovieDetails = () => {
                 {isSelected ? (
                   <>
                     <IoHeartDislikeOutline className="text-white text-sm lg:text-2xl inline mx-1" />
-                    Remove from Favoritess
+                    Remove from Favorites
                   </>
                 ) : (
                   <>
                     <RiHeartAddFill className="text-white text-sm lg:text-2xl inline mx-1" />
-                    Add to Favoritess
+                    Add to Favorites
                   </>
                 )}
               </p>
