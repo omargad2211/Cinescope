@@ -1,5 +1,5 @@
 import React from "react";
-import MovieCardSkeleton from "../../../components/MovieCardSkeleton";
+import MovieCardSkeleton from "../../../components/MovieCardSkeleton ";
 
 const TopRatedSkeleton = () => {
   return (
