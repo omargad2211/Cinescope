@@ -35,8 +35,15 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-
-
+.searchglass {
+  /* From https://css.glass */
+  background: rgba(7, 7, 7, 0.849);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(24, 24, 24, 0.24);
+}
 
 .gradient-border {
   --border-width: 1px;

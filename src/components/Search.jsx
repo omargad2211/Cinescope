@@ -27,12 +27,13 @@ const Search = () => {
 
       {/* Only render the results div if searchQuery has a value and searchData exists */}
       {searchQuery && searchData?.results?.length > 0 && (
-        <div className="absolute top-[65px] z-[51] rounded-3xl right-0 w-full h-[440px] bg-white/50 shadow-black/10 backdrop-blur-lg border border-white/60 overflow-y-auto scrollbar-hide ">
+        <div className="absolute top-[65px] z-[51] rounded-3xl right-0 w-full h-[440px] shadow-black/10 backdrop-blur-[5px] border border-white/60 overflow-y-auto scrollbar-hide searchglass">
           <div className="absolute top-0 h-full w-full rounded-3xl"></div>
           {searchData?.results?.map(
             (item) =>
               item.poster_path != null && (
                 <Link
+                  onClick={() => setSearchQuery("")}
                   key={item.id}
                   to={
                     item.media_type === "tv"
