@@ -16,7 +16,7 @@ const Favorites = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-t from-black to-red-950 py-24 z-20 w-full">
-      <div className="container md:w-custom-md xl:w-custom-xl mx-auto">
+      <div className="px-4 md:px-12 md:w-custom-md xl:w-custom-xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-8">
           <h1 className="text-white text-4xl font-bold uppercase tracking-wider text-start">
@@ -60,7 +60,7 @@ const Favorites = () => {
                           {movie.name}{" "}
                           {movie.date ? `(${movie.date.slice(0, 4)})` : ""}
                         </p>
-                        <p className="text-neutral-400 font-thin text-[8px] truncate-multiline pr-8">
+                        <p className="text-neutral-400 font-thin text-[8px] md:text-sm truncate-multiline pr-8">
                           {movie.description}
                         </p>
                         {Array.isArray(movie.categories) && (
