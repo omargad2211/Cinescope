@@ -7,7 +7,7 @@ const TrendingShows = () => {
   const bannerData = useSelector((state) => state.movies.bannerData);
   const { explore } = useParams();
 
-  console.log(bannerData);
+  // console.log(bannerData);
   return (
     <div className="relative flex flex-col justify-start items-start gap-3 z-50 w-full container md:w-custom-md xl:w-custom-xl mx-auto ">
       <p className="font-semibold text-2xl text-neutral-300">Trending Show</p>

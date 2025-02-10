@@ -41,7 +41,7 @@ const Explore = () => {
 
     return buttons;
   };
-  console.log(isLoading);
+  // console.log(isLoading);
   if (isLoading) {
     return <ExploreSkeleton />;
   }

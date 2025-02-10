@@ -47,7 +47,7 @@ const BannerHome = () => {
     <section className="w-full h-full">
       <div className="flex min-h-full max-h-[97vh] overflow-hidden">
         {bannerData?.map((data, index) => {
-          console.log(imageURL + data.backdrop_path);
+          // console.log(imageURL + data.backdrop_path);
           return (
             <div
               key={data.id + "bannerHome" + index}

@@ -13,7 +13,7 @@ const RecommendedMovies = () => {
     id: movieID,
   });
 
-  console.log(relatedMovies);
+  // console.log(relatedMovies);
   return (
     <div className="relative flex flex-col justify-start items-start gap-3 z-50 w-full container md:w-custom-md xl:w-custom-xl mx-auto py-24">
       <p className="font-semibold text-2xl text-neutral-400">Recommendations</p>

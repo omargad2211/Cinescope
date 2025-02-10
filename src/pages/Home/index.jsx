@@ -25,7 +25,7 @@ const Home = () => {
   );
   let randomNumber = Math.floor(Math.random() * 20);
   let background = `https://image.tmdb.org/t/p/original/${trendingData?.results[randomNumber].backdrop_path}`;
-  console.log(background);
+  // console.log(background);
   return (
     <>
       <MainBackground background={background} style={"naVglass"}>
