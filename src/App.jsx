@@ -5,16 +5,20 @@ import MovieDetails from "./pages/MovieDetails";
 import Explore from "./pages/Explore";
 import Favorites from "./pages/Favourite";
 import Mood from "./pages/mood";
+import ScrollTop from "./Helpers/ScrollTop";
 
 function App() {
   return (
-    <Routes>
-      <Route element={<PublicLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path=":explore/:movieID" element={<MovieDetails />} />
-        <Route path=":explore" element={<ConditionalExplore />} />
-      </Route>
-    </Routes>
+    <>
+      <ScrollTop />
+      <Routes>
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path=":explore/:movieID" element={<MovieDetails />} />
+          <Route path=":explore" element={<ConditionalExplore />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
