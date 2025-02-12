@@ -6,6 +6,7 @@ import Explore from "./pages/Explore";
 import Favorites from "./pages/Favourite";
 import Mood from "./pages/mood";
 import ScrollTop from "./Helpers/ScrollTop";
+import ActorDetails from "./pages/Actor";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path=":explore/:movieID" element={<MovieDetails />} />
           <Route path=":explore" element={<ConditionalExplore />} />
+          <Route path="actor/:actorID" element={<ActorDetails />} />
         </Route>
       </Routes>
     </>
