@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useGetMovieCrewQuery } from "../../../redux/apiData/getDataSlice";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ScrollingCrew = () => {
   return (
@@ -13,6 +13,7 @@ const ScrollingCrew = () => {
 const Scrolling = () => {
   const { movieID } = useParams();
   const { data: movieCrew } = useGetMovieCrewQuery(movieID);
+  console.log(movieCrew);
 
   const crewItems = movieCrew?.cast?.filter((cast) => cast?.profile_path) || [];
   const duplicatedItems = [
@@ -43,7 +44,11 @@ const Scrolling = () => {
         animate="animate"
       >
         {duplicatedItems.map((cast, index) => (
-          <div key={index} className="flex flex-col items-center text-center">
+          <Link
+            to={`/actor/${cast.id}`}
+            key={index}
+            className="flex flex-col items-center text-center"
+          >
             <img
               src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
               alt={cast.name}
@@ -51,7 +56,7 @@ const Scrolling = () => {
             />
             <p className="text-sm font-bold text-white mt-2">{cast.name}</p>
             <p className="text-xs text-neutral-400">{cast.character}</p>
-          </div>
+          </Link>
         ))}
       </motion.div>
     </div>

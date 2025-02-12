@@ -82,6 +82,20 @@ export const getDataApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["Genres"],
     }),
+    getActorMovies: builder.query({
+      query: (actorId) => ({
+        url: `person/${actorId}/combined_credits`,
+        method: "GET",
+      }),
+      providesTags: ["ActorMovies"],
+    }),
+    getActorDetails: builder.query({
+      query: (actorId) => ({
+        url: `person/${actorId}`,
+        method: "GET",
+      }),
+      providesTags: ["ActorDetails"],
+    }),
   }),
 });
 
@@ -98,4 +112,6 @@ export const {
   useGetDiscoverQuery,
   useGetSearchQuery,
   useGetGenreQuery,
+  useGetActorMoviesQuery,
+  useGetActorDetailsQuery
 } = getDataApiSlice;
