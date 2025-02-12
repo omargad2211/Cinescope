@@ -9,7 +9,7 @@ import ActorWork from "./components/ActorWork";
 
 const ActorDetails = () => {
   const { actorID } = useParams();
-  console.log(actorID);
+//   console.log(actorID);
   const { data: actorData } = useGetActorDetailsQuery(actorID);
   const background = actorData?.profile_path
     ? `https://image.tmdb.org/t/p/original/${actorData.profile_path}`

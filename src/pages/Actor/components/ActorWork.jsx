@@ -12,7 +12,7 @@ const ActorWork = () => {
 
   const { data: actorMovies } = useGetActorMoviesQuery(actorID);
 
-  console.log(actorMovies);
+//   console.log(actorMovies);
   return (
     <div className="relative flex flex-col justify-start items-start gap-3 z-50 w-full container md:w-custom-md xl:w-custom-xl mx-auto py-24">
       <p className="font-semibold text-2xl text-neutral-400">Actor Works</p>
