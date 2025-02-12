@@ -9,26 +9,30 @@ import ActorWork from "./components/ActorWork";
 
 const ActorDetails = () => {
   const { actorID } = useParams();
-//   console.log(actorID);
   const { data: actorData } = useGetActorDetailsQuery(actorID);
   const background = actorData?.profile_path
     ? `https://image.tmdb.org/t/p/original/${actorData.profile_path}`
     : "";
+//   console.log(actorData);
 
   return (
     <>
       {background && (
         <MainBackground background={background}>
-          <div className="flex flex-wrap justify-between items-center gap-4 pt-48 relative z-20  w-full  container md:w-custom-md xl:w-custom-xl mx-auto">
-            {actorData?.biography && (
+          <div className="flex flex-wrap justify-between items-center gap-4 pt-48 relative z-20 w-full container md:w-custom-md xl:w-custom-xl mx-auto">
+            {actorData?.biography ? (
               <div className="flex flex-col items-center justify-center gap-2 w-full lg:w-1/2">
                 <p className="text-white bg-white/5 shadow-black/10 backdrop-blur-[5px] border border-white/20 px-2 py-1 rounded-2xl">
                   {actorData.biography}
                 </p>
               </div>
-            )}
+            ) : null}
 
-            <div className="flex flex-col justify-center items-center bg-white/20 p-4 gap-4 w-full lg:w-1/3 rounded-xl">
+            <div
+              className={`flex flex-col justify-center items-center bg-white/20 p-4 gap-4 w-full ${
+                actorData?.biography ? "lg:w-1/3" : "lg:w-full"
+              } rounded-xl`}
+            >
               {background && (
                 <img
                   src={background}
